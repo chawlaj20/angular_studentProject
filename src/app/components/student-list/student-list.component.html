@@ -1,0 +1,54 @@
+<h4>Student List</h4>
+<div class="list row">
+   <div class="col-md-8">
+    <div class="input-group mb-3">
+         <input
+          type="text"
+          class="form-control"
+          placeholder="Search by course"
+          [(ngModel)]="course"
+         />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="searchCourse()"> Search</button>
+        </div>
+ </div>    
+</div>
+
+    
+    <table class="table table-striped">
+      <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Course</th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let student of students ;let i=index"[class.active]="i==currentIndex"(click)="setActiveStudents(student,i)">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.course}}</td>
+      </tbody>
+        <!-- class="list-group-item"
+        *ngFor="let student of students; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveStudents(student, i)" -->
+      <!-- >
+        {{ student.name }}
+      </li> -->
+    <!-- </ul> -->
+
+    
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllStudents()">
+      Remove All
+    </button>
+    </table>
+
+    
+  
+  <div class="col-md-6">
+    <app-student-details
+      [viewMode]="true"
+      [currentStudent]="currentStudent"
+    ></app-student-details>
+  </div>
+
